@@ -26,6 +26,9 @@ class LaunchActivity : AppCompatActivity() {
                         if (downloadedOrder.status == "waiting") {
                             startActivity(Intent(this, EditOrderActivity::class.java))
                         }
+                        else if (downloadedOrder.status == "in-progress") {
+                            startActivity(Intent(this, OrderInProgressActivity::class.java))
+                        }
                     }
                 }
                 .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error downloading document", e) }
