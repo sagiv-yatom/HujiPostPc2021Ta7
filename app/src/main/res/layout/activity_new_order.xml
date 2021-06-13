@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewOrderActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:ignore="MissingConstraints" >
+
+        <TextView
+            android:id="@+id/newOrderTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:text="New Order"
+            android:textColor="#000000"
+            android:textSize="35sp"
+            android:paddingBottom="30dp"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:id="@+id/customerNameTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:text="Name"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:paddingEnd="20dp"
+                tools:ignore="RtlSymmetry"/>
+
+            <EditText
+                android:id="@+id/customerNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="@id/customerNameTitleTextView"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="30dp" >
+
+            <TextView
+                android:id="@+id/picklesTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:text="Pickles"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:paddingEnd="20dp"
+                tools:ignore="RtlSymmetry"/>
+
+            <Button
+                android:id="@+id/decreasePicklesNumButton"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="-"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/picklesTitleTextView"/>
+
+            <TextView
+                android:id="@+id/picklesNumTextView"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="@id/decreasePicklesNumButton"
+                />
+
+            <Button
+                android:id="@+id/increasePicklesNumButton"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="+"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/picklesNumTextView"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:paddingBottom="30dp" >
+
+            <TextView
+                android:id="@+id/hummusTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:text="Hummus"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:paddingEnd="20dp"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/hummusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/hummusTextView" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="30dp" >
+
+            <TextView
+                android:id="@+id/tahiniTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:text="Tahini"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:paddingEnd="20dp"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/tahiniButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/tahiniTextView"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="30dp" >
+
+            <TextView
+                android:id="@+id/commentTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:text="Comment"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:paddingEnd="20dp"
+                tools:ignore="RtlSymmetry"/>
+
+            <EditText
+                android:cursorVisible="true"
+                android:id="@+id/commentEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:maxLines="3"
+                app:layout_constraintStart_toStartOf="@id/commentTitleTextView"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/sendNewOrderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

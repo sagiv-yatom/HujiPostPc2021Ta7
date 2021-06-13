@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "116074705660",
+    "project_id": "rachelsandwiches-f8dbc",
+    "storage_bucket": "rachelsandwiches-f8dbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116074705660:android:89d6e3ce92e48d2faedd79",
+        "android_client_info": {
+          "package_name": "huji.postpc.y2021.hujipostpc2021ta7"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116074705660-1kfcpa8p975vvs006hjma5rmuq3v7jht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3yziG98TKj_fpr-1FcuBz-Oh95jtZMks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116074705660-1kfcpa8p975vvs006hjma5rmuq3v7jht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116074705660:android:603b1002da0a4463aedd79",
+        "android_client_info": {
+          "package_name": "huji.postpc.y2021.rachelsandwiches"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116074705660-1kfcpa8p975vvs006hjma5rmuq3v7jht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3yziG98TKj_fpr-1FcuBz-Oh95jtZMks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116074705660-1kfcpa8p975vvs006hjma5rmuq3v7jht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

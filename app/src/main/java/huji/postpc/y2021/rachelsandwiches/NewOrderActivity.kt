@@ -1,0 +1,90 @@
+package huji.postpc.y2021.rachelsandwiches
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import java.util.*
+
+class NewOrderActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_new_order)
+
+        val customerNameEditText = findViewById<EditText>(R.id.customerNameEditText)
+        val picklesNumTextView = findViewById<TextView>(R.id.picklesNumTextView)
+        val decreasePicklesNumButton = findViewById<Button>(R.id.decreasePicklesNumButton)
+        val increasePicklesNumButton = findViewById<Button>(R.id.increasePicklesNumButton)
+        val hummusButton = findViewById<Button>(R.id.hummusButton)
+        val tahiniButton = findViewById<Button>(R.id.tahiniButton)
+        val commentEditText = findViewById<EditText>(R.id.commentEditText)
+        val sendNewOrderButton = findViewById<FloatingActionButton>(R.id.sendNewOrderButton)
+
+//        val database = FirestoreData(this)
+//        if (database.SPContainsKey()) {
+//            //todo - change to editOrderActivity
+//        }
+
+
+        var name: String = ""
+        var pickles: Int = 0;
+        var hummus: Boolean = false
+        var tahini: Boolean = false
+        var comment: String = ""
+
+        picklesNumTextView.text = pickles.toString()
+        decreasePicklesNumButton.isEnabled = false
+        hummusButton.text = "NO"
+        tahiniButton.text = "NO"
+
+        decreasePicklesNumButton.setOnClickListener {
+            pickles--
+            picklesNumTextView.text = pickles.toString()
+            decreasePicklesNumButton.isEnabled = pickles != 0
+            increasePicklesNumButton.isEnabled = pickles != 10
+        }
+
+        increasePicklesNumButton.setOnClickListener {
+            pickles++
+            picklesNumTextView.text = pickles.toString()
+            decreasePicklesNumButton.isEnabled = pickles != 0
+            increasePicklesNumButton.isEnabled = pickles != 10
+        }
+
+        hummusButton.setOnClickListener {
+            if (hummus) {
+                hummus = false
+                hummusButton.text = "NO"
+            } else {
+                hummus = true
+                hummusButton.text = "YES"
+            }
+        }
+
+        tahiniButton.setOnClickListener {
+            if (tahini) {
+                tahini = false
+                tahiniButton.text = "NO"
+            } else {
+                tahini = true
+                tahiniButton.text = "YES"
+            }
+        }
+
+        sendNewOrderButton.setOnClickListener {
+            val newId = UUID.randomUUID().toString()
+            name = customerNameEditText.text.toString()
+            comment = commentEditText.text.toString()
+            val db = Firebase.firestore
+            val newOrder = Order(newId, name, pickles, hummus, tahini, comment, "waiting")
+            db.collection("orders").document(newId).set(newOrder)
+                .addOnSuccessListener { println("yesssssssssssss") }
+                .addOnFailureListener { println("noooooooooooo") }
+//            database.uploadDocument(newId, name, pickles, hummus, tahini, comment)
+        }
+    }
+}
