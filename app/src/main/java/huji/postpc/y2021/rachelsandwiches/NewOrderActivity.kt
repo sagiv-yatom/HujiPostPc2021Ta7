@@ -15,7 +15,7 @@ class NewOrderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_order)
 
-        val database = FirestoreData()
+        val database = FirestoreData(this)
 
         val customerNameEditText = findViewById<EditText>(R.id.customerNameEditText)
         val picklesNumTextView = findViewById<TextView>(R.id.picklesNumTextView)
@@ -25,12 +25,6 @@ class NewOrderActivity : AppCompatActivity() {
         val tahiniButton = findViewById<Button>(R.id.tahiniButton)
         val commentEditText = findViewById<EditText>(R.id.commentEditText)
         val sendNewOrderButton = findViewById<FloatingActionButton>(R.id.sendNewOrderButton)
-
-//        val database = FirestoreData(this)
-//        if (database.SPContainsKey()) {
-//            //todo - change to editOrderActivity
-//        }
-
 
         var name: String = ""
         var pickles: Int = 0;
