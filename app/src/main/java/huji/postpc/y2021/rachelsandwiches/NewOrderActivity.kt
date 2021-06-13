@@ -15,6 +15,8 @@ class NewOrderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_order)
 
+        val database = FirestoreData()
+
         val customerNameEditText = findViewById<EditText>(R.id.customerNameEditText)
         val picklesNumTextView = findViewById<TextView>(R.id.picklesNumTextView)
         val decreasePicklesNumButton = findViewById<Button>(R.id.decreasePicklesNumButton)
@@ -79,12 +81,7 @@ class NewOrderActivity : AppCompatActivity() {
             val newId = UUID.randomUUID().toString()
             name = customerNameEditText.text.toString()
             comment = commentEditText.text.toString()
-            val db = Firebase.firestore
-            val newOrder = Order(newId, name, pickles, hummus, tahini, comment, "waiting")
-            db.collection("orders").document(newId).set(newOrder)
-                .addOnSuccessListener { println("yesssssssssssss") }
-                .addOnFailureListener { println("noooooooooooo") }
-//            database.uploadDocument(newId, name, pickles, hummus, tahini, comment)
+            database.uploadDocument(newId, name, pickles, hummus, tahini, comment)
         }
     }
 }
