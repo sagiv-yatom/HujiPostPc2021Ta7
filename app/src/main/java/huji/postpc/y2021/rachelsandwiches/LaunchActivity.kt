@@ -23,11 +23,16 @@ class LaunchActivity : AppCompatActivity() {
                     Log.d(ContentValues.TAG, "Document successfully downloaded")
                     val downloadedOrder = result.toObject(Order::class.java)
                     if (downloadedOrder != null) {
-                        if (downloadedOrder.status == "waiting") {
-                            startActivity(Intent(this, EditOrderActivity::class.java))
-                        }
-                        else if (downloadedOrder.status == "in-progress") {
-                            startActivity(Intent(this, OrderInProgressActivity::class.java))
+                        when (downloadedOrder.status) {
+                            "waiting" -> {
+                                startActivity(Intent(this, EditOrderActivity::class.java))
+                            }
+                            "in-progress" -> {
+                                startActivity(Intent(this, OrderInProgressActivity::class.java))
+                            }
+                            "ready" -> {
+                                startActivity(Intent(this, OrderIsReadyActivity::class.java))
+                            }
                         }
                     }
                 }
