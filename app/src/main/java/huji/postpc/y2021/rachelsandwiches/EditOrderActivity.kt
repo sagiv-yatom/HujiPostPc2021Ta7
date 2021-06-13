@@ -27,6 +27,7 @@ class EditOrderActivity : AppCompatActivity() {
         val hummusButton = findViewById<Button>(R.id.hummusButton)
         val tahiniButton = findViewById<Button>(R.id.tahiniButton)
         val commentEditText = findViewById<EditText>(R.id.commentEditText)
+        val deleteOrderButton = findViewById<Button>(R.id.deleteOrderButton)
         val saveOrderButton = findViewById<FloatingActionButton>(R.id.saveOrderButton)
 
         var name: String = ""
@@ -103,6 +104,12 @@ class EditOrderActivity : AppCompatActivity() {
                 tahini = true
                 tahiniButton.text = "YES"
             }
+        }
+
+        deleteOrderButton.setOnClickListener {
+            database.deleteDocument(orderId)
+            val intentToOpenNewOrderActivity = Intent(this, NewOrderActivity::class.java)
+            startActivity(intentToOpenNewOrderActivity)
         }
 
         saveOrderButton.setOnClickListener {

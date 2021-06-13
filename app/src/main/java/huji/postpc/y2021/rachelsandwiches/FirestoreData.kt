@@ -39,4 +39,12 @@ class FirestoreData(context: Context) {
         editor.putString("id", id)
         editor.apply()
     }
+
+    fun deleteDocument(id: String) {
+        db.collection("orders").document(id).delete()
+                .addOnSuccessListener { Log.d(TAG, "Order successfully deleted") }
+                .addOnFailureListener { e -> Log.w(TAG, "Error deleting order", e) }
+
+        sp.edit().clear().apply()
+    }
 }

@@ -78,7 +78,7 @@ class NewOrderActivity : AppCompatActivity() {
             database.uploadDocument(newId, name, pickles, hummus, tahini, comment)
 
             val intentToOpenEditOrderActivity = Intent(this, EditOrderActivity::class.java)
-            startActivity(intentToOpenEditOrderActivity);
+            startActivity(intentToOpenEditOrderActivity)
 
         }
     }
