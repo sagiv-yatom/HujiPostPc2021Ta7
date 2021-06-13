@@ -1,14 +1,14 @@
 package huji.postpc.y2021.rachelsandwiches
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import java.util.*
+
 
 class NewOrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,6 +82,10 @@ class NewOrderActivity : AppCompatActivity() {
             name = customerNameEditText.text.toString()
             comment = commentEditText.text.toString()
             database.uploadDocument(newId, name, pickles, hummus, tahini, comment)
+
+            val intentToOpenEditOrderActivity = Intent(this, EditOrderActivity::class.java)
+            startActivity(intentToOpenEditOrderActivity);
+
         }
     }
 }

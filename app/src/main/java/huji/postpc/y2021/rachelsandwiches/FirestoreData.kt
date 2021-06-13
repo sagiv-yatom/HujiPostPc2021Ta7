@@ -1,5 +1,7 @@
 package huji.postpc.y2021.rachelsandwiches
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -20,8 +22,8 @@ class FirestoreData {
             id, customerName, pickles, hummus, tahini, comment, "waiting"
         )
         db.collection("orders").document(id).set(newOrder)
-            .addOnSuccessListener { println("yesssssssssssss") }
-            .addOnFailureListener { println("noooooooooooo") }
+            .addOnSuccessListener { Log.d(TAG, "New order successfully uploaded") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error uploading new order", e) }
 //        val editor = sp.edit()
 //        editor.putString("id", id)
 //        editor.apply()

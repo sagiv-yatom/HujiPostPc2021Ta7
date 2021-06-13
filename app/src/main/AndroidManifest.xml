@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RachelSandwiches">
+        <activity android:name=".EditOrderActivity"></activity>
         <activity android:name=".NewOrderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
