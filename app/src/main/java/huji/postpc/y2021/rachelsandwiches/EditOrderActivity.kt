@@ -31,9 +31,15 @@ class EditOrderActivity : AppCompatActivity() {
                 val downloadedOrder = result.toObject(Order::class.java)
                 if (downloadedOrder != null) {
                     customerNameEditText.setText(downloadedOrder.customerName)
-//                    picklesNumTextView.text = downloadedOrder.pickles.toString().toInt()
-                    hummusButton.text = downloadedOrder.hummus.toString()
-                    tahiniButton.text = downloadedOrder.tahini.toString()
+                    picklesNumTextView.text = downloadedOrder.pickles.toString()
+
+                    if (downloadedOrder.hummus) hummusButton.text = "yes" else {
+                        hummusButton.text = "no"
+                    }
+                    if (downloadedOrder.tahini) tahiniButton.text = "yes" else {
+                        tahiniButton.text = "no"
+                    }
+                    commentEditText.setText(downloadedOrder.comment)
                 }
             }
             .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error downloading document", e) }

@@ -14,6 +14,10 @@ class FirestoreData(context: Context) {
     var sp: SharedPreferences = context.getSharedPreferences("local_db_item", Context.MODE_PRIVATE)
     var orderId: String? = sp.getString("id", null)
 
+    fun cleanSP() {
+        sp.edit().clear().apply()
+    }
+
     fun uploadDocument(
         id: String,
         customerName: String,
@@ -23,7 +27,6 @@ class FirestoreData(context: Context) {
         comment: String
     ) {
 
-//        sp.edit().clear().apply()
         val newOrder = Order(
             id, customerName, pickles, hummus, tahini, comment, "waiting"
         )
