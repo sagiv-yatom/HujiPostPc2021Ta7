@@ -79,6 +79,7 @@ class NewOrderActivity : AppCompatActivity() {
 
             val intentToOpenEditOrderActivity = Intent(this, EditOrderActivity::class.java)
             startActivity(intentToOpenEditOrderActivity)
+            finish()
 
         }
     }

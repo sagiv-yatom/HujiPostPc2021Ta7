@@ -1,6 +1,7 @@
 package huji.postpc.y2021.rachelsandwiches
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -110,12 +111,39 @@ class EditOrderActivity : AppCompatActivity() {
             database.deleteDocument(orderId)
             val intentToOpenNewOrderActivity = Intent(this, NewOrderActivity::class.java)
             startActivity(intentToOpenNewOrderActivity)
+            finish()
         }
 
         saveOrderButton.setOnClickListener {
             name = customerNameEditText.text.toString()
             comment = commentEditText.text.toString()
             database.uploadDocument(orderId, name, pickles, hummus, tahini, comment)
+        }
+
+        // when the order's status is changed
+        database.db.collection("orders").document(orderId).addSnapshotListener{ snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null && snapshot.exists()) {
+                val downloadedOrder = snapshot.toObject(Order::class.java)
+                if (downloadedOrder != null) {
+                    when (downloadedOrder.status) {
+                        "in-progress" -> {
+                            startActivity(Intent(this, OrderInProgressActivity::class.java))
+                            finish()
+                        }
+                        "ready" -> {
+                            startActivity(Intent(this, OrderIsReadyActivity::class.java))
+                            finish()
+                        }
+                    }
+                }
+            } else {
+                Log.d(TAG, "Current data: null")
+            }
         }
     }
 }
