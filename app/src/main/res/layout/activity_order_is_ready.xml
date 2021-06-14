@@ -38,7 +38,7 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/goItButton"
+            android:id="@+id/gotItButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

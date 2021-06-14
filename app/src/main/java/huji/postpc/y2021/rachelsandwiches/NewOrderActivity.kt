@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,10 +32,38 @@ class NewOrderActivity : AppCompatActivity() {
         var tahini: Boolean = false
         var comment: String = ""
 
-        picklesNumTextView.text = pickles.toString()
-        decreasePicklesNumButton.isEnabled = false
-        hummusButton.text = "NO"
-        tahiniButton.text = "NO"
+        if (savedInstanceState != null) {
+            name = savedInstanceState.getString("customer name").toString()
+            pickles = savedInstanceState.getInt("pickles")
+            hummus = savedInstanceState.getBoolean("hummus")
+            tahini = savedInstanceState.getBoolean("tahini")
+            comment = savedInstanceState.getString("comment").toString()
+
+            customerNameEditText.setText(name)
+            picklesNumTextView.text = pickles.toString()
+
+            if (hummus) {
+                hummusButton.text = "YES"
+            }
+            else {
+                hummusButton.text = "NO"
+            }
+
+            if (tahini) {
+                tahiniButton.text = "YES"
+            }
+            else {
+                tahiniButton.text = "NO"
+            }
+
+            commentEditText.setText(comment)
+        }
+        else {
+            picklesNumTextView.text = pickles.toString()
+            decreasePicklesNumButton.isEnabled = false
+            hummusButton.text = "NO"
+            tahiniButton.text = "NO"
+        }
 
         decreasePicklesNumButton.setOnClickListener {
             pickles--
@@ -76,7 +103,7 @@ class NewOrderActivity : AppCompatActivity() {
             val newId = UUID.randomUUID().toString()
             name = customerNameEditText.text.toString()
             comment = commentEditText.text.toString()
-            database.uploadDocument(newId, name, pickles, hummus, tahini, comment)
+            database.uploadOrder(newId, name, pickles, hummus, tahini, comment, "waiting")
 
             val intentToOpenEditOrderActivity = Intent(this, EditOrderActivity::class.java)
             startActivity(intentToOpenEditOrderActivity)
